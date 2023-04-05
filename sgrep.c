@@ -61,7 +61,7 @@ void parsefile(char filename[], int is_numbered, int is_colored) {
 				// print colored patter if -c was a command line argument
 				if (is_colored == 1) {
 					// split line into substrings before, at, and after pattern occurrence
-					printf("%.*s", strlen(line) - strlen(strstr(line, head2->val)), line);
+					printf("%.*s", (int)(strlen(line) - strlen(strstr(line, head2->val))), line);
 					printf(COLOR_CODE "%s" RESET_CODE, head2->val);
 					printf("%s", strstr(line, head2->val) + strlen(head2->val));
 				}
@@ -83,7 +83,6 @@ void parsefile(char filename[], int is_numbered, int is_colored) {
 void iterate_commands(char *argv[], int argc) {
 	int is_numbered = 0;
 	int is_colored = 0;
-	int help = 0;
 	int len = argc;
 	int i = 1;
 	while (i < len) {
